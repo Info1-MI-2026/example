@@ -14,3 +14,27 @@
 
 Labo 0 - Installation :
 https://cyberlearn.hes-so.ch/mod/resource/view.php?id=2076886
+
+### Questions 
+```bash
+~
+├── documents
+└── info
+    └── demo
+        └── main.c
+```
+
+1) Quelle commande affiche la liste des fichiers d'un répertoire ? Quelle est la différence avec `ls -la` ?
+
+2) Tu es dans `~`. Comment aller dans le répertoire `info`, puis revenir au répertoire parent ?
+
+3) Comment créer un répertoire nommé `tp1` ?
+
+4) C'est quoi compiler, et pourquoi doit-on compiler un programme C ?
+
+5) Dans la commande `gcc main.c -o app`, c'est quoi `app` ?
+
+6) C'est quoi WSL ? Que fait la commande `code .` ?
+
+7) Tu es dans `~` et il y a un fichier `main.c` dans `~/info/demo/`. Donne les commandes pour compiler puis exécuter le programme.
+
