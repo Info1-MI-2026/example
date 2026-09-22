@@ -97,15 +97,15 @@ https://cyberlearn.hes-so.ch/mod/resource/view.php?id=2076886
 
 1) Quelle commande affiche la liste des fichiers d'un répertoire ? Quelle est la différence avec `ls -la` ?
 
-2) Tu es dans `~`. Comment aller dans le répertoire `info`, puis revenir au répertoire parent ?
+2) Depuis le répertoire `~`, quelles commandes permettent d'accéder au répertoire `info`, puis de revenir au répertoire parent ?
 
 3) Comment créer un répertoire nommé `tp1` ?
 
-4) C'est quoi compiler, et pourquoi doit-on compiler un programme C ?
+4) Qu'est-ce que la compilation, et pourquoi est-il nécessaire de compiler un programme C ?
 
-5) Dans la commande `gcc main.c -o app`, c'est quoi `app` ?
+5) Dans la commande `gcc main.c -o app`, que représente `app` ?
 
-6) C'est quoi WSL ? Que fait la commande `code .` ?
+6) Qu'est-ce que WSL ? Que fait la commande `code .` ?
 
-7) Tu es dans `~` et il y a un fichier `main.c` dans `~/info/demo/`. Donne les commandes pour compiler puis exécuter le programme.
+7) Depuis le répertoire `~`, sachant qu'un fichier `main.c` se trouve dans `~/info/demo/`, quelles commandes permettent de compiler puis d'exécuter le programme ?
 
