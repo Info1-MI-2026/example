@@ -1,4 +1,57 @@
 
+# 22.09 - Numération
+
+Dans l'ordinateur, tout est stocké sous forme de bits. Une même suite de bits peut représenter des valeurs différentes selon la façon dont on l'interprète. Pour savoir comment une valeur est stockée, il faut connaître :
+
+- le **nombre de bits** utilisés (8, 16, 32, 64…) ;
+- si la valeur est **signée** ou **non signée**.
+
+> [!NOTE]
+> Par exemple, `1111 1111` sur 8 bits vaut **255** en non signé, mais **-1** en signé.
+
+## Complément à 2
+
+Pour représenter les nombres négatifs, on utilise le **complément à 2**. Pour passer d'un nombre positif à son opposé (et inversement) :
+
+1. inverser tous les bits (complément à 1) ;
+2. ajouter 1.
+
+Exemple sur 8 bits : `5` = `0000 0101` → inversion `1111 1010` → +1 → `1111 1011` = `-5`.
+
+Sur *n* bits signés, le bit de poids fort indique le signe : `0` pour positif, `1` pour négatif. La plage représentable va de -2^(n-1) à 2^(n-1) - 1.
+
+## À retenir
+
+Vous devez savoir :
+
+- changer de base entre le binaire (2), le décimal (10) et l'hexadécimal (16) ;
+- interpréter un nombre binaire, signé ou non signé, en connaissant le nombre de bits ;
+- additionner et soustraire deux nombres binaires.
+
+---
+
+## Questions
+
+**1. Convertir 37 en binaire, puis en hexadécimal.**
+
+**2. Convertir `0x2F` en base 10, puis en binaire.**
+
+**3. Donner la valeur en base 10 de `1101` sachant que le nombre est codé sur 4 bits non signés. Même question si le nombre est codé sur 4 bits signés.**
+
+**4. Qu'est-ce que le complément à 2 ? Comment obtient-on l'opposé d'un nombre binaire ?**
+
+**5. Représenter -5 sur 8 bits en complément à 2.**
+
+**6. Quelle est la plage de valeurs représentables sur 8 bits non signés ? Sur 8 bits signés ?**
+
+**7. Calculer `0101 + 0011` en binaire sur 4 bits. Quel est le résultat en base 10 ?**
+
+**8. Calculer `0110 - 0011` en binaire sur 4 bits en utilisant le complément à 2.**
+
+**9. Que se passe-t-il si l'on additionne `1000` et `1000` sur 4 bits non signés ? Comment s'appelle ce phénomène ?**
+
+**10. Pourquoi est-il indispensable de connaître le nombre de bits et le caractère signé ou non signé pour interpréter une valeur stockée en mémoire ?**
+
 # 17.09 - Git et Workflow labo
 Git est un outil qui **garde l'historique** du code. Il permet de revenir en arrière, de voir ce qui a changé et de partager le travail.
 
