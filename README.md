@@ -34,6 +34,15 @@ Un `char` signé ne va que de -128 à 127. Voir [variable.c](variable.c) pour le
 
 ---
 
+## Les nombres et les bases
+- nombre : https://heig-tin-info.github.io/handout/content/datatype.html#les-nombres-reels
+- binaire : https://heig-tin-info.github.io/handout/content/numeration.html#systeme-binaire
+- hexadécimal : https://heig-tin-info.github.io/handout/content/numeration.html#systeme-hexadecimal
+- complement à 2 : https://heig-tin-info.github.io/handout/content/numeration.html#complement-a-deux
+
+- ASCII : https://heig-tin-info.github.io/handout/content/ascii.html
+
+
 ## Questions
 
 **1. Que faut-il indiquer pour déclarer une variable ?**
