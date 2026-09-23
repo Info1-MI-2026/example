@@ -1,3 +1,57 @@
+# 23.09 - Variables et types
+
+Une **déclaration** demande un **type** et un **nom** : `int compteur;`
+
+On **initialise** la variable avec `=`. Sans initialisation, sa valeur est **inconnue**.
+
+```c
+int compteur;        // valeur inconnue
+double force = 1.2e3; // déclaration + initialisation
+```
+
+## Les types de base
+
+| Type | Taille | Contenu | `printf` |
+|---|---|---|---|
+| `int` | 32 bits signés | entier | `%d` |
+| `double` | 64 bits | nombre à virgule | `%lf` |
+| `char` | 8 bits signés | caractère (= un entier, code ASCII) | `%c` ou `%d` |
+
+> [!NOTE]
+> Un `char` s'écrit avec des guillemets **simples** : `'A'` et non `"A"`.
+
+## Dépassement de capacité
+
+Si le résultat ne tient pas dans le type, les bits en trop sont perdus et la valeur
+obtenue est fausse — souvent négative, car le bit de poids fort devient le bit de signe.
+
+```c
+char c = 100;
+printf("%d\n", (char)(2 * c)); // affiche -56 et non 200
+```
+
+Un `char` signé ne va que de -128 à 127. Voir [variable.c](variable.c) pour les exemples complets.
+
+---
+
+## Questions
+
+**1. Que faut-il indiquer pour déclarer une variable ?**
+
+**2. Que vaut une variable déclarée mais non initialisée ?**
+
+**3. Quels sont les trois types de base vus au cours, et combien de bits occupent-ils ?**
+
+**4. Quel format `printf` utilise-t-on pour un `int`, un `double`, un `char` ?**
+
+**5. Quelle est la différence entre `'A'` et `"A"` ?**
+
+**6. Que vaut `'g' - 'a' + 1` ? Pourquoi peut-on faire des calculs avec des `char` ?**
+
+**7. Un `char` vaut 120. Que donne `2 * 120` stocké dans un `char` ? Expliquer le résultat.**
+
+**8. Quelle est la plage de valeurs d'un `char` signé ?**
+
 
 # 22.09 - Numération
 
