@@ -1,3 +1,110 @@
+# 24.09 - Les conditions
+
+Une condition permet d'exécuter un bloc de code **seulement si** une expression est vraie.
+
+```c
+if (cpt > 0) {
+    printf("Le compteur est positif\n");
+}
+else if (cpt < -10) {
+    printf("Le compteur est plus petit que -10\n");
+}
+else if (cpt < 0) {
+    printf("Le compteur est négatif\n");
+}
+else {
+    printf("Le compteur vaut 0\n");
+}
+```
+
+- `if` : le bloc est exécuté si la condition est vraie.
+- `else if` : testé **seulement si** les conditions précédentes étaient fausses. On peut en mettre plusieurs.
+- `else` : exécuté si **aucune** condition n'était vraie. Il est facultatif.
+
+Les conditions sont testées dans l'ordre : dès qu'une est vraie, son bloc est exécuté et les suivantes sont ignorées.
+
+> [!NOTE]
+> En C, une valeur égale à `0` est **fausse**, toute autre valeur est **vraie**. `if (3)` est donc toujours exécuté.
+
+## Opérateurs de comparaison
+
+Le résultat d'une comparaison vaut `1` (vrai) ou `0` (faux).
+
+| Opérateur | Signification |
+|---|---|
+| `==` | égal |
+| `!=` | différent |
+| `<` | plus petit |
+| `<=` | plus petit ou égal |
+| `>` | plus grand |
+| `>=` | plus grand ou égal |
+
+> [!WARNING]
+> `=` est une **affectation**, `==` est une **comparaison**. `if (a = 5)` modifie `a` et est toujours vrai !
+
+On combine plusieurs conditions avec les opérateurs logiques : `&&` (ET), `||` (OU) et `!` (NON).
+
+```c
+if (cpt > 0 && condition1) {
+    printf("Le compteur est positif et condition1 est vraie\n");
+}
+
+if (!condition1) { // équivalent à : condition1 == false
+    printf("condition1 est fausse\n");
+}
+```
+
+## Le type `bool`
+
+On peut stocker le résultat d'une condition dans une variable de type `bool`, qui vaut `true` ou `false`.
+Pour l'utiliser, il faut inclure `stdbool.h`.
+
+```c
+#include <stdbool.h>
+
+bool condition1 = false;    // false vaut 0, true vaut 1
+bool est_positif = cpt > 0; // résultat d'une comparaison
+
+if (est_positif) {
+    printf("Le compteur est positif\n");
+}
+```
+
+## Conventions de nommage
+
+| Convention | Exemple |
+|---|---|
+| snake_case | `cpt_machine` |
+| camelCase | `cptMachine` |
+| PascalCase | `CptMachine` |
+
+Le C est sensible à la casse : ces trois noms désignent trois variables **différentes**. Choisir une convention et s'y tenir.
+
+Voir [condition.c](condition.c) pour l'exemple complet.
+
+## Exercices
+
+- [Exercices sur les conditions](https://github.com/tony-maulaz/info1-exercices/blob/main/ex20-conditions.md)
+
+---
+
+## Questions
+
+**1. Quelle est la différence entre `if`, `else if` et `else` ?**
+
+**2. Si plusieurs conditions d'une suite `if` / `else if` sont vraies, lesquelles sont exécutées ?**
+
+**3. Quelle est la différence entre `=` et `==` ?**
+
+**4. Que vaut l'expression `5 > 3` ? Et `5 == 3` ?**
+
+**5. Le bloc de `if (7 / 9)` est-il exécuté ? Pourquoi ?**
+
+**6. Écrire une condition qui est vraie si `x` est compris entre 10 et 20 (inclus).**
+
+**7. Que faut-il inclure pour utiliser le type `bool` ? Quelles valeurs peut-il prendre ?**
+
+
 # 23.09 - Variables et types
 
 Une **déclaration** demande un **type** et un **nom** : `int compteur;`
