@@ -1,4 +1,4 @@
-# Semaine 5 — scanf avec plusieurs valeurs et ternaire
+# Semaine 5 — scanf avec plusieurs valeurs, ternaire et buffer d'entrée
 
 [← Retour à l'index](../README.md)
 
@@ -109,3 +109,125 @@ Voir [saisie_multiple.c](../saisie_multiple.c) pour l'exemple complet.
 **6. Réécrire avec l'opérateur ternaire : `if (a > b) max = a; else max = b;`**
 
 **7. Que vaut `x` après `int x = 7 % 2 == 0 ? 10 : 20;` ?**
+
+## 15.10 - Le buffer d'entrée
+
+### Le buffer d'entrée
+
+Quand l'utilisateur tape au clavier, les caractères ne vont pas directement dans les variables du programme.
+Ils sont d'abord stockés dans une zone mémoire appelée **buffer d'entrée** (`stdin`).
+
+Le programme ne reçoit la ligne qu'au moment où l'utilisateur appuie sur **Entrée**.
+La touche Entrée est elle aussi un caractère : `'\n'` (code ASCII 10).
+
+Si l'utilisateur tape `abc12` puis Entrée, le buffer contient :
+
+```
+'a'  'b'  'c'  '1'  '2'  '\n'
+```
+
+### Comment `scanf` lit le buffer
+
+`scanf` lit les caractères **un par un depuis le début du buffer** et s'arrête dès qu'un caractère
+ne correspond pas au format demandé.
+
+Les caractères qui ne sont pas utilisés **restent dans le buffer**. Le prochain `scanf` (ou `getchar`) repartira de là.
+
+| Saisie | `scanf("%d", &value)` retourne | `value` | Reste dans le buffer |
+|---|---|---|---|
+| `12` | `1` | `12` | `'\n'` |
+| `12abc` | `1` | `12` | `abc\n` |
+| `abc12` | `0` | non modifié | `abc12\n` |
+
+> [!WARNING]
+> Même une saisie réussie laisse au minimum le `'\n'` dans le buffer.
+
+### `getchar`
+
+`getchar()` lit **un seul caractère** dans le buffer et le retire du buffer.
+Si le buffer est vide, `getchar()` attend que l'utilisateur tape une nouvelle ligne.
+
+`getchar()` retourne un `int` (le code du caractère).
+
+### Exemple : voir ce qui reste dans le buffer
+
+Le programme [buffer.c](../buffer.c) fait deux `scanf("%d", …)` puis lit six caractères avec `getchar()`.
+Résultat avec la saisie `abc12` :
+
+```
+Entrez un entier : abc12
+scanf retourne 0, value = 0
+2e scanf retourne 0, value = 0
+Caractère 1 : 'a' (code 97)
+Caractère 2 : 'b' (code 98)
+Caractère 3 : 'c' (code 99)
+Caractère 4 : '1' (code 49)
+Caractère 5 : '2' (code 50)
+Caractère 6 : '
+' (code 10)
+```
+
+On constate que :
+
+- le premier `scanf` échoue sur le `'a'` et ne le retire pas du buffer ;
+- le deuxième `scanf` **n'attend pas** de saisie : il retombe sur le même `'a'` et échoue à nouveau ;
+- tous les caractères tapés sont encore dans le buffer, y compris le `'\n'`.
+
+À essayer : relancer le programme avec `12abc`, puis avec seulement `a`.
+
+### Vider le buffer
+
+Pour repartir sur une saisie propre, on lit et on jette tous les caractères jusqu'au `'\n'` inclus :
+
+```c
+while (getchar() != '\n') {}
+```
+
+On vide le buffer **après chaque `scanf`**, que la saisie ait réussi ou non.
+
+### Application : redemander une saisie
+
+Sans vidage du buffer, une boucle de re-saisie tourne à l'infini : `scanf` retombe toujours sur les mêmes
+caractères invalides. Avec le vidage, l'utilisateur peut recommencer :
+
+```c
+double x;
+int ret;
+
+do {
+    printf("Coordonnée x : ");
+    ret = scanf("%lf", &x);
+    while (getchar() != '\n') {}
+
+    if (ret != 1) {
+        printf("Valeur invalide, recommencez\n");
+    }
+} while (ret != 1);
+```
+
+> [!NOTE]
+> À retenir :
+> - les caractères tapés vont dans un buffer ; Entrée ajoute un `'\n'` ;
+> - `scanf` s'arrête au premier caractère invalide et le laisse dans le buffer ;
+> - toujours tester la valeur de retour de `scanf` ;
+> - vider le buffer après chaque `scanf` avec `while (getchar() != '\n') {}`.
+
+### Théorie
+
+- [Entrées/sorties](https://heig-tin-info.github.io/handout/content/stdio.html)
+
+---
+
+### Questions
+
+**1. Que contient le buffer après que l'utilisateur a tapé `42` puis Entrée, et qu'un `scanf("%d", &n)` a été exécuté ?**
+
+**2. Avec `scanf("%d", &n)`, l'utilisateur tape `7x`. Que retourne `scanf`, que vaut `n` et que reste-t-il dans le buffer ?**
+
+**3. Pourquoi un deuxième `scanf("%d", &n)` n'attend-il pas de saisie après une saisie invalide ?**
+
+**4. Quel est le type de retour de `getchar()` ?**
+
+**5. Écrire la ligne qui vide le buffer jusqu'au retour à la ligne.**
+
+**6. Écrire une boucle qui redemande un entier entre 1 et 10 tant que la saisie est invalide ou hors limites.**
