@@ -8,6 +8,7 @@ Théorie de référence : le [handout](https://heig-tin-info.github.io/handout/)
 
 | Semaine | Dates | Thèmes |
 |---|---|---|
+| [S6](semaines/s06-switch-break-continue.md) | 28.10 | `switch`, `case`, `default`, `break` et `continue` dans les boucles |
 | [S5](semaines/s05-scanf-multiple-ternaire.md) | 14.10 – 15.10 | `scanf` avec plusieurs valeurs, opérateur ternaire, buffer d'entrée, `getchar` |
 | [S4](semaines/s04-arguments-boucles.md) | 06.10 – 07.10 | arguments de `main`, `sscanf`, `while`, `do … while`, `for` |
 | [S3](semaines/s03-printf-scanf.md) | 30.09 | `scanf`, formatage avec `printf` |
@@ -25,6 +26,8 @@ Théorie de référence : le [handout](https://heig-tin-info.github.io/handout/)
 - **Boucles** : [S4 — 07.10](semaines/s04-arguments-boucles.md#0710---les-boucles)
 - **Buffer d'entrée, `getchar`, vider le buffer** : [S5 — 15.10](semaines/s05-scanf-multiple-ternaire.md#1510---le-buffer-dentrée)
 - **Opérateur ternaire** : [S5 — 14.10](semaines/s05-scanf-multiple-ternaire.md#lopérateur-ternaire)
+- **`switch`** : [S6 — 28.10](semaines/s06-switch-break-continue.md#2810---le-switch)
+- **`break`, `continue`** : [S6 — 28.10](semaines/s06-switch-break-continue.md#break-et-continue-dans-les-boucles)
 - **Git** : [S1 — 17.09](semaines/s01-intro-git.md#1709---git-et-workflow-labo)
 - **Commandes Linux** : [S1 — 16.09](semaines/s01-intro-git.md#1609---introduction-au-cours)
 
